@@ -1,0 +1,16 @@
+C:\Users\Daniel\graphiti/lib/libGraphiti.dll.a
+C:\Users\Daniel\graphiti/bin/libGraphiti.dll
+C:\Users\Daniel\graphiti/lib/libGraphiti_C.dll.a
+C:\Users\Daniel\graphiti/bin/libGraphiti_C.dll
+C:\Users\Daniel\graphiti/include/Graphiti/API.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/API_HID.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/API_VCP.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/Connection/Connection.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/Connection/Connection_HID.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/Connection/Connection_VCP.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/CWrapper/capi.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/Extension.hpp
+C:\Users\Daniel\graphiti/include/Graphiti/ThreadSafeQueue.hpp
+C:\Users\Daniel\graphiti/lib/cmake/Graphiti/GraphitiConfig.cmake
+C:\Users\Daniel\graphiti/lib/cmake/Graphiti/GraphitiConfig-release.cmake
+C:\Users\Daniel\graphiti/lib/cmake/Graphiti/GraphitiConfigVersion.cmake

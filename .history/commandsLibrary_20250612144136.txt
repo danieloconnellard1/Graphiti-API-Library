@@ -1,0 +1,14 @@
+# Install vcpkg (clone to where you like and add to PATH)
+git clone https://github.com/microsoft/vcpkg.git
+
+.\vcpkg\bootstrap-vcpkg.bat
+
+.\vcpkg\vcpkg integrate install   
+
+.\vcpkg\vcpkg install asio 
+
+
+# Path to graphiti installation
+cmake -B build -DCMAKE_PREFIX_PATH="$env:USERPROFILE\.local"
+
+cmake --build build

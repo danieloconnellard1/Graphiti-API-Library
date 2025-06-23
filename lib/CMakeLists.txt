@@ -1,0 +1,70 @@
+cmake_minimum_required(VERSION 3.15)
+set(CMAKE_CXX_STANDARD 23)
+
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Daniel/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_CXX_COMPILER "g++")
+add_definitions(-D_WIN32_WINNT=0x0601)
+
+project(Graphiti VERSION 1.0.0 LANGUAGES CXX C)  # Add C support
+
+# --- Critical: Retain GNUInstallDirs for standard paths ---
+include(GNUInstallDirs)
+
+find_package(asio REQUIRED)
+
+# --- Original C++ Library ---
+add_library(Graphiti SHARED 
+    src/API.cpp 
+    src/Extension.cpp
+    src/Connection/Connection_VCP.cpp
+)
+
+target_include_directories(Graphiti PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+target_link_libraries(Graphiti PUBLIC 
+    asio::asio
+    ws2_32
+)
+
+# --- C-Compatible Wrapper Library ---
+add_library(Graphiti_C SHARED 
+    src/CWrapper/capi.cpp  # C wrapper implementation
+)
+
+target_include_directories(Graphiti_C PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+target_link_libraries(Graphiti_C PRIVATE Graphiti)  # Link to C++ core
+
+# --- Install Rules (using GNUInstallDirs variables) ---
+install(TARGETS Graphiti Graphiti_C
+    EXPORT GraphitiTargets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}      # e.g., 'lib' or 'lib64'
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}      # Static libs (.a/.lib)
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}      # DLLs on Windows
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # Headers
+)
+
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(EXPORT GraphitiTargets
+    FILE GraphitiConfig.cmake
+    NAMESPACE Graphiti::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Graphiti
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    GraphitiConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+install(FILES 
+    ${CMAKE_CURRENT_BINARY_DIR}/GraphitiConfigVersion.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Graphiti
+)

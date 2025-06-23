@@ -1,0 +1,6 @@
+update_Display_Functionality
+set_Display_Funcitonality
+clear_Display_Functionality
+update_Single_Pixel_Functionality
+update_Single_Row_Functionality
+update_Single_Column_Functionality

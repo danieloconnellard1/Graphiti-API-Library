@@ -1,0 +1,51 @@
+cmake_minimum_required(VERSION 3.15)
+set(CMAKE_CXX_STANDARD 23)
+
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Daniel/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+project(Graphiti VERSION 1.0.0 LANGUAGES CXX)
+
+add_library(Graphiti SHARED 
+    src/API.cpp 
+    src/Extension.cpp
+    src/Connection/Connection_VCP.cpp
+)
+
+target_include_directories(Graphiti PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  # During development
+    $<INSTALL_INTERFACE:include>                            # After installation
+)
+
+find_package(asio REQUIRED)
+target_link_libraries(Graphiti PUBLIC 
+    asio::asio
+    ws2_32
+)
+
+include(GNUInstallDirs)
+install(TARGETS Graphiti
+    EXPORT GraphitiTargets           # Generates GraphitiTargets.cmake
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+install(EXPORT GraphitiTargets
+    FILE GraphitiConfig.cmake
+    NAMESPACE Graphiti::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Graphiti
+)
+
+include(CMakePackageConfigHelpers)
+write_basic_package_version_file(
+    GraphitiConfigVersion.cmake
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+install(FILES 
+    ${CMAKE_CURRENT_BINARY_DIR}/GraphitiConfigVersion.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Graphiti
+)

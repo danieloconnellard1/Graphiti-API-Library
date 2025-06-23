@@ -1,0 +1,9 @@
+# ninja log v6
+23	5044	7719912357652220	CMakeFiles/Graphiti.dir/src/Extension.cpp.obj	73bdba7b3d4efe68
+30	5068	7719912357722175	CMakeFiles/Graphiti_C.dir/src/CWrapper/capi.cpp.obj	11a7461a9cecc953
+18	5781	7719912357612175	CMakeFiles/Graphiti.dir/src/API.cpp.obj	38fc8dc7a9be0fab
+26	5868	7719912357682192	CMakeFiles/Graphiti.dir/src/Connection/Connection_VCP.cpp.obj	6e58e529c09408c8
+5868	7081	7719912418147361	libGraphiti.dll	5911b21115b3b8ac
+5868	7081	7719912418147361	libGraphiti.dll.a	5911b21115b3b8ac
+7082	7826	7719912429331921	libGraphiti_C.dll	fb2acb5dfac40d58
+7082	7826	7719912429331921	libGraphiti_C.dll.a	fb2acb5dfac40d58

@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.15)
+
+set(CMAKE_CXX_STANDARD 23)
+
+# Set vcpkg toolchain (adjust path as needed)
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Daniel/Visual Studio Code Projects/Graphiti_API_Library_0_1/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+project(RunGraphiti)
+
+find_package(Graphiti REQUIRED)
+
+add_executable(main main.cpp)
+target_link_libraries(main PRIVATE Graphiti::Graphiti)

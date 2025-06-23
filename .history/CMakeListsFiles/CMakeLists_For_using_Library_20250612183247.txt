@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.15)
+
+set(CMAKE_CXX_STANDARD 23)
+# Compiler g++
+set(CMAKE_CXX_COMPILER "g++")
+
+# Set vcpkg toolchain (adjust path as needed)
+# Make sure vcpkg has asio
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Daniel/vcpkg/scripts/buildsystems/vcpkg.cmake")
+# Set path for Graphit library
+set(CMAKE_PREFIX_PATH "C:/Users/Daniel/graphiti")
+
+# Your project
+project(RunGraphiti)
+
+# Find asio for Graphiti
+find_package(asio REQUIRED)
+# Find Graphiti
+find_package(Graphiti REQUIRED)
+
+add_executable(main src/main.cpp)
+target_link_libraries(main PRIVATE Graphiti::Graphiti)

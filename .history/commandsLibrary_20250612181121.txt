@@ -1,0 +1,25 @@
+# Install vcpkg (clone to where you like and add to PATH)
+# copy toolchain
+git clone https://github.com/microsoft/vcpkg.git
+
+.\vcpkg\bootstrap-vcpkg.bat
+
+.\vcpkg\vcpkg integrate install   
+
+.\vcpkg\vcpkg install asio 
+
+
+# Path to graphiti installation
+cmake -B build -DCMAKE_PREFIX_PATH="$env:USERPROFILE\graphiti"
+
+# Also have a compiler like g++ and a build system like ninja
+# Commands for using ninja are below
+# make a build folder too
+
+Remove-Item -Recurse -Force .\build\
+
+cmake -G Ninja -B build -S .
+
+ninja -C build
+
+.\build\main.exe

@@ -1,0 +1,11 @@
+# ninja log v6
+44	11578	7718150980392111	CMakeFiles/Testing.dir/TestFolder/TestHarness.cpp.obj	ce0423fa2b85005c
+72	5664	7718165477691343	CMakeFiles/Graphiti.dir/lib/src/Extension.cpp.obj	7facb2c2f597bd14
+19	7863	7718171852404484	CMakeFiles/Testing.dir/TestFolder/Tests.cpp.obj	5bb675d6629acd38
+13	5858	7718171852343640	CMakeFiles/Testing.dir/TestFolder/main.cpp.obj	72f79ce1288b782c
+17	14796	7718150980099721	CMakeFiles/Graphiti.dir/lib/src/API.cpp.obj	70ab24d614df586e
+28	13276	7718150980206236	CMakeFiles/Graphiti.dir/lib/src/Connection/Connection_VCP.cpp.obj	96c980cf6034bbe4
+21	13511	7718150980152300	CMakeFiles/Graphiti.dir/lib/src/API_VCP.cpp.obj	12d781916150c9d
+5664	7532	7718165537812963	libGraphiti.dll	db9c335d4292fdac
+5664	7532	7718165537812963	libGraphiti.dll.a	db9c335d4292fdac
+7864	9343	7718171930841978	Testing.exe	e8e126c9ed2a390f
